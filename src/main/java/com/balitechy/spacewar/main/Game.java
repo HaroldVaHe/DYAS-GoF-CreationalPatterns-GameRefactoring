@@ -51,29 +51,34 @@ public class Game extends Canvas implements Runnable {
         bullets = new BulletController();
 
         // Establece el estilo de renderizado
-        setRenderStyle("1"); // 1(sprites), 2(Vectorial) 3(ColorVector)
+        setRenderStyle("3"); // 1(sprites), 2(Vectorial) 3(ColorVector)
     }
 
    public void setRenderStyle(String style) {
     BufferedImage playerImage = sprites.getImage(219, 304, Player.WIDTH, Player.HEIGHT);
     BufferedImage bulletImage = sprites.getImage(35, 52, Bullet.WIDTH, Bullet.HEIGHT);
-    if (style.equals("1")) {
-        rendererFactory = new SpriteRendererFactory();//imagen
-        playerRenderer = rendererFactory.createPlayerRenderer(playerImage);
-        bulletRenderer = rendererFactory.createBulletRenderer(bulletImage);
-        backgroundRenderer = rendererFactory.createBackgroundRenderer(sprites2.getImage(0, 0, WIDTH, HEIGHT));
-    } else if (style.equals("2")) {
-        rendererFactory = new VectorRendererFactory();
-        playerRenderer = rendererFactory.createPlayerRenderer(null);
-        bulletRenderer = rendererFactory.createBulletRenderer(null);
-        backgroundRenderer = rendererFactory.createBackgroundRenderer(null);
-    }
-     else if (style.equals("3")) {
-        rendererFactory = new ColorVectorRendererFactory();
-        playerRenderer = rendererFactory.createPlayerRenderer(null);
-        bulletRenderer = rendererFactory.createBulletRenderer(null);
-        backgroundRenderer = rendererFactory.createBackgroundRenderer(null);
-    }
+        switch (style) {
+            case "1":
+                rendererFactory = new SpriteRendererFactory();//imagen
+                playerRenderer = rendererFactory.createPlayerRenderer(playerImage);
+                bulletRenderer = rendererFactory.createBulletRenderer(bulletImage);
+                backgroundRenderer = rendererFactory.createBackgroundRenderer(sprites2.getImage(0, 0, WIDTH, HEIGHT));
+                break;
+            case "2":
+                rendererFactory = new VectorRendererFactory();
+                playerRenderer = rendererFactory.createPlayerRenderer(null);
+                bulletRenderer = rendererFactory.createBulletRenderer(null);
+                backgroundRenderer = rendererFactory.createBackgroundRenderer(null);
+                break;
+            case "3":
+                rendererFactory = new ColorVectorRendererFactory();
+                playerRenderer = rendererFactory.createPlayerRenderer(null);
+                bulletRenderer = rendererFactory.createBulletRenderer(null);
+                backgroundRenderer = rendererFactory.createBackgroundRenderer(null);
+                break;
+            default:
+                break;
+        }
 }
 
 
