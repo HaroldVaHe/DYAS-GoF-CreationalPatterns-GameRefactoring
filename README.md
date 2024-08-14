@@ -1,3 +1,6 @@
+# Diagrama UML
+![UML-Juego](img/UMLJuego.jpg "UML Juego")
+
 # Universidad de la Sabana
 ## Diseño y Arquitectura de Software
 
